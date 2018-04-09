@@ -1,6 +1,9 @@
 #ifndef clox_memory_h
 #define clox_memory_h
 
+// TODO hardcore mode - implement a SLOB/SLAB/SLUB memory allocator for yourself.
+// One malloc is allowed at the very start and then you must allocate all of the,
+// memory from that in here... sounds trick but awesome.
 #define GROW_CAPACITY(capacity) \
   ((capacity) < 8 ? 8 : (capacity) * 2)
 

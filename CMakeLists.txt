@@ -13,4 +13,6 @@ add_executable(
   src/debug.c
   src/value.h
   src/value.c
+  src/vm.h
+  src/vm.c
   )
