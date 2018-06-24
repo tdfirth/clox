@@ -7,10 +7,14 @@ add_executable(
   src/chunk.h
   src/chunk.c
   src/common.h
-  src/memory.h
-  src/memory.c
+  src/compiler.h
+  src/compiler.c
   src/debug.h
   src/debug.c
+  src/memory.h
+  src/memory.c
+  src/scanner.c
+  src/scanner.h
   src/value.h
   src/value.c
   src/vm.h
