@@ -146,6 +146,12 @@ static void number()
   emit_constant(NUMBER_VAL(value));
 }
 
+static void string()
+{
+  emit_constant(OBJECT_VAL(
+      copy_string(parser.previous.start + 1, parser.previous.length - 2)));
+}
+
 static void parse_precedence(Precedence precedence)
 {
   advance();
@@ -272,7 +278,7 @@ ParseRule rules[] = {
     {NULL, binary, PREC_COMPARISON}, // TOKEN_LESS
     {NULL, binary, PREC_COMPARISON}, // TOKEN_LESS_EQUAL
     {NULL, NULL, PREC_NONE},         // TOKEN_IDENTIFIER
-    {NULL, NULL, PREC_NONE},         // TOKEN_STRING
+    {string, NULL, PREC_NONE},       // TOKEN_STRING
     {number, NULL, PREC_NONE},       // TOKEN_NUMBER
     {NULL, NULL, PREC_AND},          // TOKEN_AND
     {NULL, NULL, PREC_NONE},         // TOKEN_CLASS

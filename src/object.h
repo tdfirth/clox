@@ -7,8 +7,8 @@
 #define OBJECT_TYPE(value) (AS_OBJECT(value)->type)
 
 #define IS_STRING(value) is_object_type(value, OBJECT_STRING)
-#define AS_STRING(value) ((ObjectString *) AS_OBJECT(value))
-#define AS_CSTRING(value) (((ObjectString *) AS_OBJECT(value))->chars)
+#define AS_STRING(value) ((ObjectString *)AS_OBJECT(value))
+#define AS_CSTRING(value) (((ObjectString *)AS_OBJECT(value))->chars)
 
 typedef enum {
   OBJECT_STRING,
@@ -24,8 +24,10 @@ struct sObjectString {
   char *chars;
 };
 
+ObjectString *copy_string(const char *chars, int length);
+void print_object(Value value);
 
-static inline bool is_object_type(Value, value, ObjectType type)
+static inline bool is_object_type(Value value, ObjectType type)
 {
   return IS_OBJECT(value) && AS_OBJECT(value)->type == type;
 }

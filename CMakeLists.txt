@@ -20,4 +20,5 @@ add_executable(
   src/vm.h
   src/vm.c
   src/object.h
+  src/object.c
   )
