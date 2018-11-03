@@ -1,8 +1,12 @@
 #ifndef clox_memory_h
 #define clox_memory_h
 
+#include "object.h"
+
 #define ALLOCATE(type, count)                                                  \
   (type *)reallocate(NULL, 0, sizeof(type) * (count))
+
+#define FREE(type, pointer) reallocate(pointer, sizeof(type), 0)
 
 // TODO hardcore mode - implement a SLOB/SLAB/SLUB memory allocator for
 // yourself. One malloc is allowed at the very start and then you must allocate
@@ -17,5 +21,6 @@
   reallocate(pointer, sizeof(type) * (old_count), 0)
 
 void *reallocate(void *previous, size_t old_sze, size_t new_size);
+void free_objects();
 
 #endif

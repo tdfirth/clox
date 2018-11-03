@@ -1,5 +1,6 @@
 cmake_minimum_required (VERSION 3.10)
 set (CMAKE_C_STANDARD 99)
+set (CMAKE_BUILD_TYPE Debug)
 project(clox C)
 add_executable(
   clox
