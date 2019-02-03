@@ -22,4 +22,6 @@ add_executable(
   src/vm.c
   src/object.h
   src/object.c
+  src/table.h
+  src/table.c
   )

@@ -5,8 +5,8 @@
 #include "common.h"
 #include "compiler.h"
 #include "debug.h"
-#include "object.h"
 #include "memory.h"
+#include "object.h"
 #include "vm.h"
 
 VM vm;
@@ -33,11 +33,13 @@ void init_vm()
 {
   reset_stack();
   vm.objects = NULL;
+  init_table(&vm.strings);
 }
 
 void free_vm()
 {
   free_objects();
+  free_table(&vm.strings);
 }
 
 void push(Value value)
@@ -67,6 +69,7 @@ static void concatenate()
   ObjectString *b = AS_STRING(pop());
   ObjectString *a = AS_STRING(pop());
   int length = a->length + b->length;
+  printf("New string length is %d\n", length);
   char *chars = ALLOCATE(char, length + 1);
   memcpy(chars, a->chars, a->length);
   memcpy(chars + a->length, b->chars, b->length);
